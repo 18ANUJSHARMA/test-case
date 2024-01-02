@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create AI Character</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">  </head>
+<body>
+  <h1>Create a New AI Character</h1>
+  {% if error_message %}
+    <p class="error">{{ error_message }}</p>
+  {% endif %}
+  {% if success_message %}
+    <p class="success">{{ success_message }}</p>
+  {% endif %}
+  <form method="POST">
+    <label for="characterName">Character Name:</label>
+    <input type="text" id="characterName" name="characterName"><br><br>
+
+    <label for="generateOption">Background Text:</label><br>
+    <input type="radio" id="generateOption" name="backgroundOption" value="generate" checked>
+    <label for="generateOption">Generate Automatically</label><br>
+    <input type="radio" id="writeOption" name="backgroundOption" value="write">
+    <label for="writeOption">Write Background Text</label><br>
+    <textarea id="backgroundText" name="backgroundText" style="display: none;"></textarea>
+
+    <br><br>
+    <button type="submit">Create Character</button>
+  </form>
+
+  <script>
+    const radioButtons = document.querySelectorAll('input[name="backgroundOption"]');
+    const backgroundTextArea = document.getElementById("backgroundText");
+  
+    radioButtons.forEach(button => {
+      button.addEventListener("change", () => {
+        if (button.value === "write") {
+          backgroundTextArea.style.display = "block";
+        } else {
+          backgroundTextArea.style.display = "none";
+          backgroundTextArea.value = "";  // Clear text area if switching back
+        }
+      });
+    });
+  </script>
+</body>
+</html>

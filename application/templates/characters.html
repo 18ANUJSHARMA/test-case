@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Characters</title>
+</head>
+<body>
+   
+    <h1>Your Characters</h1>
+    <ul>
+        {% for data in characterData %}
+
+            <li><a href="{{ url_for('character_page', character_name=data) }}">{{ data }}</a></li>
+            
+        {% endfor %}
+    </ul>
+    
+    
+
+    <h1>Create new character</h1>
+  <button><a href="{{ url_for('create_new')}}">new character</a></button> 
+  
+</body>
+</html>

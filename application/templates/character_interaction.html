@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Interaction</title>
+</head>
+<body>
+   
+
+
+    <div style="text-align: center;">
+        <h1>{{ name }}</h1>
+        <h2>Character Conversation</h2>
+    <form action="{{ url_for('character_page', character_name=name) }}" method="post">
+        <label for="speech">User Speech:</label>
+        <input type="text" id="speech" name="speech" required>
+        <button type="submit">Get Response</button>
+    </form>
+
+
+    
+
+    <!--{% if speech %}
+    <p> You : {{ speech }}</p>
+    {% endif %}
+    {% if response %}
+    <p>{{name}}: {{ response }}</p>
+    {% endif %}
+    </div>-->
+
+    <div id="conversation-history">
+        {% for conversation in conversation_history %}
+            <div class="conversation-pair">
+                <p class="user-speech">{{ conversation['user_speech'] }}</p>
+                <p class="ai-response">{{ conversation['ai_response'] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div>
+        <h2 style="text-align: center;">Character Data</h2>
+       
+        <p>Background: {{ background[0] }}</p>
+       <!-- <p>System Content: {{ system_content }}</p>-->
+    </div>
+    <div>
+        
+          
+        
+    </div>
+   
+    
+    <button><a href="{{ url_for('characters' )}}"{{ data }}>choose another character</a></button> 
+  
+
+</body>
+</html>
+

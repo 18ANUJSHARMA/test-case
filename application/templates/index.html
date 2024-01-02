@@ -1,0 +1,23 @@
+
+
+
+
+{% block content %}
+   <div style="text-align: center;">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Welcome to AI REPLICA</h1>
+            <h4 style="color: red;">Create your favourite characters</h4>
+            <br>
+            {% if login %}
+            <h3>Let's get started.</h3>
+            {% else %}
+            <p>New user ? <a href="{{ url_for('register') }}">Register</a> </p>
+            <p>Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+            {% endif %}
+
+            </div>
+    </div>
+</div>
+    {% endblock %}
+
